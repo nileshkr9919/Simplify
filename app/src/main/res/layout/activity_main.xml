@@ -6,19 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/expression"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/answer"
-        android:gravity="right"
-        android:paddingRight="30dp"
-        android:paddingBottom="10dp"
-        android:text=""
-        android:textColor="?android:textColorPrimary"
-        android:textSize="48sp"
-        android:autoSizeTextType="uniform"
-        />
+        android:layout_alignParentRight="true">
+        <TextView
+            android:id="@+id/expression1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingRight="30dp"
+            android:paddingBottom="10dp"
+            android:text=""
+            android:textColor="?android:textColorPrimary"
+            android:textSize="37sp"
+            android:autoSizeTextType="uniform"
+            />
+        <TextView
+            android:id="@+id/operator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="30dp"
+            android:paddingBottom="10dp"
+            android:gravity="right"
+            android:layout_toRightOf="@id/expression1"
+            android:text=""
+            android:textColor="?android:textColorPrimary"
+            android:textSize="28sp"
+            android:autoSizeTextType="uniform"
+            />
+        <TextView
+            android:id="@+id/expression2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="30dp"
+            android:layout_toRightOf="@id/operator"
+            android:gravity="right"
+            android:text=""
+            android:textColor="?android:textColorPrimary"
+            android:textSize="38sp"
+            android:autoSizeTextType="uniform"
+            />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/answer"
@@ -27,9 +57,9 @@
         android:layout_above="@id/numberPad"
         android:gravity="right"
         android:paddingRight="30dp"
-        android:paddingBottom="40dp"
         android:text=""
-        android:textSize="28sp"
+        android:textSize="48sp"
+        android:textColor="?android:textColorPrimary"
         android:autoSizeTextType="uniform"
         />
 

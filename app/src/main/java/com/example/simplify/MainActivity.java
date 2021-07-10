@@ -7,163 +7,144 @@ import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    String operand1 = "";
-    String operand2 = "";
-    float result;
     boolean addition, subtraction, multiplication, division, percentage;
+    TextView expression1;
+    TextView expression2;
+    TextView operator;
+    TextView answer;
+    int operand1, operand2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().setBackgroundDrawable(getDrawable(R.color.mystyle));
+
+        expression1 = (TextView)findViewById(R.id.expression1);
+        expression2 = (TextView)findViewById(R.id.expression2);
+        operator = (TextView)findViewById(R.id.operator);
+        answer = (TextView)findViewById(R.id.answer);
     }
+
 
     public void operation(View view) {
-        TextView expression = (TextView) findViewById(R.id.expression);
-        TextView answer = (TextView) findViewById(R.id.answer);
         switch (view.getId()) {
             case R.id.one:
-                expression.setText(expression.getText() + "1");
-                set("1");
+                if(addition||subtraction||multiplication||division||percentage)
+                    expression2.setText(expression2.getText() + "1");
+                else
+                    expression1.setText(expression1.getText() + "1");
                 break;
             case R.id.two:
-                expression.setText(expression.getText() + "2");
-                set("2");
+                if(addition||subtraction||multiplication||division||percentage)
+                    expression2.setText(expression2.getText() + "2");
+                else
+                    expression1.setText(expression1.getText() + "2");
                 break;
             case R.id.three:
-                expression.setText(expression.getText() + "3");
-                set("3");
+                if(addition||subtraction||multiplication||division||percentage)
+                    expression2.setText(expression2.getText() + "3");
+                else
+                    expression1.setText(expression1.getText() + "3");
                 break;
             case R.id.four:
-                expression.setText(expression.getText() + "4");
-                set("4");
+                if(addition||subtraction||multiplication||division||percentage)
+                    expression2.setText(expression2.getText() + "4");
+                else
+                    expression1.setText(expression1.getText() + "4");
                 break;
             case R.id.five:
-                expression.setText(expression.getText() + "5");
-                set("5");
+                if(addition||subtraction||multiplication||division||percentage)
+                    expression2.setText(expression2.getText() + "5");
+                else
+                    expression1.setText(expression1.getText() + "5");
                 break;
             case R.id.six:
-                expression.setText(expression.getText() + "6");
-                set("6");
+                if(addition||subtraction||multiplication||division||percentage)
+                    expression2.setText(expression2.getText() + "6");
+                else
+                    expression1.setText(expression1.getText() + "6");
                 break;
             case R.id.seven:
-                expression.setText(expression.getText() + "7");
-                set("7");
+                if(addition||subtraction||multiplication||division||percentage)
+                    expression2.setText(expression2.getText() + "7");
+                else
+                    expression1.setText(expression1.getText() + "7");
                 break;
             case R.id.eight:
-                expression.setText(expression.getText() + "8");
-                set("8");
+                if(addition||subtraction||multiplication||division||percentage)
+                    expression2.setText(expression2.getText() + "8");
+                else
+                    expression1.setText(expression1.getText() + "8");
                 break;
             case R.id.nine:
-                expression.setText(expression.getText() + "9");
-                set("9");
+                if(addition||subtraction||multiplication||division||percentage)
+                    expression2.setText(expression2.getText() + "9");
+                else
+                    expression1.setText(expression1.getText() + "9");
                 break;
             case R.id.zeroOnce:
-                expression.setText(expression.getText() + "0");
-                set("0");
+                if(addition||subtraction||multiplication||division||percentage)
+                    expression2.setText(expression2.getText() + "0");
+                else
+                    expression1.setText(expression1.getText() + "0");
                 break;
             case R.id.zeroTwice:
-                expression.setText(expression.getText() + "00");
-                set("00");
+                if(addition||subtraction||multiplication||division||percentage)
+                    expression2.setText(expression2.getText() + "00");
+                else
+                    expression1.setText(expression1.getText() + "00");
                 break;
             case R.id.point:
-                expression.setText(expression.getText() + ".");
-                set(".");
+                if(addition||subtraction||multiplication||division||percentage)
+                    expression2.setText(expression2.getText() + ".");
+                else
+                    expression1.setText(expression1.getText() + ".");
                 break;
             case R.id.clear_text:
-                expression.setText(null);
-                answer.setText(null);
-                operand2 = "";
-                operand1 = "";
-                result = 0;
+                    answer.setText("");
+                    expression2.setText("");
+                    expression1.setText("");
+                    operator.setText("");
+                    addition = subtraction = multiplication = division = percentage = false;
                 break;
             case R.id.percentage:
-                expression.setText(expression.getText() + " % ");
-                set("%");
                 percentage = true;
+                operator.setText("%");
                 break;
             case R.id.divide:
-                expression.setText(expression.getText() + " / ");
-                set("/");
                 division = true;
+                operator.setText("/");
                 break;
             case R.id.multiply:
-                expression.setText(expression.getText() + " * ");
-                set("*");
                 multiplication = true;
+                operator.setText("x");
                 break;
             case R.id.add:
-                expression.setText(expression.getText() + " + ");
-                set("+");
                 addition = true;
+                operator.setText("+");
                 break;
             case R.id.subtract:
-                expression.setText(expression.getText() + "-");
-                set("-");
                 subtraction = true;
+                operator.setText("-");
                 break;
             case R.id.equals:
-                answer.setText(String.valueOf(result));
-                operand1 = String.valueOf(result);
-                operand2 = "";
+                operand1 = Integer.parseInt(String.valueOf(expression1.getText()));
+                operand2 = Integer.parseInt(String.valueOf(expression2.getText()));
+                if(addition==true)
+                    answer.setText(String.valueOf(operand1 + operand2));
+                if(subtraction==true)
+                    answer.setText(String.valueOf(operand1 - operand2));
+                if(multiplication==true)
+                    answer.setText(String.valueOf(operand1 * operand2));
+                if(division==true)
+                    answer.setText(String.valueOf(operand1 / operand2));
+                if(percentage==true)
+                    answer.setText(String.valueOf(operand1 % operand2));
+                addition = subtraction = multiplication = division = percentage = false;
                 break;
         }
     }
 
-    private void set(String input) {
-        if (!(input == "+" || input == "-" || input == "*" || input == "/" || input == "%")) {
-            if (addition || subtraction || multiplication || division || percentage)
-                operand2 += input;
-            else
-                operand1 += input;
-        }
-        else {
-            if (operand2 != "") {
-                switch (input) {
-                    case "+":
-                        add();
-                        break;
-                    case "-":
-                        subtract();
-                        break;
-                    case "*":
-                        multiply();
-                        break;
-                    case "/":
-                        divide();
-                        ;
-                        break;
-                    case "%":
-                        percent();
-                        break;
-                }
-            }
-        }
-    }
-
-    public void add() {
-        result = Float.parseFloat(operand1) + Float.parseFloat(operand2);
-        addition = false;
-    }
-
-    public void subtract() {
-        result = Float.parseFloat(operand1) - Float.parseFloat(operand2);
-        subtraction = false;
-    }
-
-    public void multiply() {
-        result = Float.parseFloat(operand1) * Float.parseFloat(operand2);
-        multiplication = false;
-    }
-
-    public void divide() {
-        result = Float.parseFloat(operand1) / Float.parseFloat(operand2);
-        division = false;
-    }
-
-    public void percent() {
-        result = (Float.parseFloat(operand1) / 100) * Float.parseFloat(operand2);
-        percentage = false;
-    }
 }
