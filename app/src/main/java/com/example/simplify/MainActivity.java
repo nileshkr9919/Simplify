@@ -110,22 +110,33 @@ public class MainActivity extends AppCompatActivity {
                     addition = subtraction = multiplication = division = percentage = false;
                 break;
             case R.id.percentage:
+                operator.setVisibility(View.VISIBLE);
+                expression2.setVisibility(View.VISIBLE);
                 percentage = true;
                 operator.setText("%");
+
                 break;
             case R.id.divide:
+                operator.setVisibility(View.VISIBLE);
+                expression2.setVisibility(View.VISIBLE);
                 division = true;
                 operator.setText("/");
                 break;
             case R.id.multiply:
+                operator.setVisibility(View.VISIBLE);
+                expression2.setVisibility(View.VISIBLE);
                 multiplication = true;
                 operator.setText("x");
                 break;
             case R.id.add:
+                operator.setVisibility(View.VISIBLE);
+                expression2.setVisibility(View.VISIBLE);
                 addition = true;
                 operator.setText("+");
                 break;
             case R.id.subtract:
+                operator.setVisibility(View.VISIBLE);
+                expression2.setVisibility(View.VISIBLE);
                 subtraction = true;
                 operator.setText("-");
                 break;
